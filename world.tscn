@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://falcons.png" type="Texture" id=1]
+[ext_resource path="res://background.jpeg" type="Texture" id=2]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=3]
+[ext_resource path="res://Pixel music.wav" type="AudioStream" id=4]
+
+[sub_resource type="ShaderMaterial" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 570.575, 16.9676 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 15.3438, 85.9931 )
+
+[node name="world" type="Node2D"]
+
+[node name="realworld" type="Node2D" parent="."]
+position = Vector2( 587.006, -329.261 )
+rotation = 1.5708
+
+[node name="floors" type="Node2D" parent="realworld"]
+position = Vector2( 329.263, 587.005 )
+rotation = -1.5708
+
+[node name="floor" type="Sprite" parent="realworld/floors"]
+modulate = Color( 0.921569, 0.815686, 0.815686, 1 )
+material = SubResource( 3 )
+use_parent_material = true
+position = Vector2( 522.021, 300.382 )
+scale = Vector2( 4.87606, 4.99461 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="realworld/floors"]
+position = Vector2( -5.27426, 3.51617 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="realworld/floors/StaticBody2D"]
+position = Vector2( 529.184, 597.75 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="realworld/floors"]
+position = Vector2( 587.006, -329.261 )
+rotation = 1.5708
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="realworld/floors/StaticBody2D2"]
+position = Vector2( 529.184, 597.75 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="realworld/floors"]
+position = Vector2( 1684.6, -334.254 )
+rotation = 1.5708
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="realworld/floors/StaticBody2D3"]
+position = Vector2( 529.184, 597.75 )
+shape = SubResource( 1 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="realworld"]
+position = Vector2( 381.462, 33.4435 )
+rotation = -1.5708
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="realworld/KinematicBody2D"]
+position = Vector2( -43.1478, 83.486 )
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="rocket" type="Sprite" parent="realworld/KinematicBody2D"]
+position = Vector2( -43.7991, 87.7155 )
+scale = Vector2( 2.76502, 3.26861 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true

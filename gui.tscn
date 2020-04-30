@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://start.png" type="Texture" id=1]
+[ext_resource path="res://startpressed.jpg" type="Texture" id=2]
+[ext_resource path="res://Control.gd" type="Script" id=3]
+[ext_resource path="res://Pixel music.wav" type="AudioStream" id=4]
+
+[node name="gui" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+margin_left = 111.0
+margin_top = 219.0
+margin_right = 911.0
+margin_bottom = 819.0
+rect_scale = Vector2( 0.978908, 0.462052 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 3.05176e-05
+margin_top = 5.84409
+margin_right = 337.0
+margin_bottom = 19.8441
+rect_scale = Vector2( 3.02827, 8.90861 )
+text = "welcome to falcon 9 lander press start to well... start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+[connection signal="pressed" from="Control/TextureButton" to="Control" method="_on_TextureButton_pressed"]
